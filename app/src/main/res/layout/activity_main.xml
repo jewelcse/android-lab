@@ -5,33 +5,64 @@
                 android:layout_height="match_parent"
                 tools:context=".MainActivity">
 
-    <EditText
-            android:id="@+id/inputEditText"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Enter text"
-            android:layout_margin="16dp" />
+    <ImageView
+            android:id="@+id/profileImageView"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:layout_below="@id/firstNameTextView"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="16dp"
+            android:src="@drawable/profile_photo" />
 
-    <Button
-            android:id="@+id/saveButton"
+
+    <TextView
+            android:id="@+id/firstNameTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Save"
-            android:layout_below="@id/inputEditText"
-            android:layout_marginTop="8dp"
-            android:layout_alignParentEnd="true"
-            android:layout_marginEnd="16dp" />
-
-    <ListView
-            android:id="@+id/dataListView"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_below="@id/saveButton"
+            android:text="First Name:"
             android:layout_marginTop="16dp"
-            android:divider="@android:color/darker_gray"
-            android:dividerHeight="1dp"
-            android:drawSelectorOnTop="true" />
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="16dp"/>
 
+    <TextView
+            android:id="@+id/lastNameTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Last Name:"
+            android:layout_below="@id/firstNameTextView"
+            android:layout_margin="16dp" />
 
+    <TextView
+            android:id="@+id/emailTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Email:"
+            android:layout_below="@id/lastNameTextView"
+            android:layout_margin="16dp" />
+
+    <TextView
+            android:id="@+id/departmentTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Department:"
+            android:layout_below="@id/emailTextView"
+            android:layout_margin="16dp" />
+
+    <TextView
+            android:id="@+id/sessionTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Session:"
+            android:layout_below="@id/departmentTextView"
+            android:layout_margin="16dp" />
+
+    <TextView
+            android:id="@+id/mobileTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Mobile Number:"
+            android:layout_below="@id/sessionTextView"
+            android:layout_margin="16dp" />
 
 </RelativeLayout>

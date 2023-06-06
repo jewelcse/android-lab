@@ -20,51 +20,45 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
-    private EditText inputEditText;
-    private Button saveButton;
-    private ListView dataListView;
-    private List<String> dataList;
-    private ArrayAdapter<String> dataAdapter;
+
+    private ImageView profileImageView;
+
+
+    private TextView firstNameTextView, lastNameTextView, emailTextView, departmentTextView, sessionTextView, mobileTextView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        inputEditText = findViewById(R.id.inputEditText);
-        saveButton = findViewById(R.id.saveButton);
-        dataListView = findViewById(R.id.dataListView);
+        firstNameTextView = findViewById(R.id.firstNameTextView);
+        lastNameTextView = findViewById(R.id.lastNameTextView);
+        emailTextView = findViewById(R.id.emailTextView);
+        departmentTextView = findViewById(R.id.departmentTextView);
+        sessionTextView = findViewById(R.id.sessionTextView);
+        mobileTextView = findViewById(R.id.mobileTextView);
+        profileImageView = findViewById(R.id.profileImageView);
 
-        dataList = new ArrayList<>();
-        dataAdapter = new ArrayAdapter<String>(this, R.layout.list_item_layout, R.id.dataTextView, dataList) {
-            @Override
-            public View getView(final int position, View convertView, ViewGroup parent) {
-                View view = super.getView(position, convertView, parent);
 
-                Button deleteButton = view.findViewById(R.id.deleteButton);
-                deleteButton.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        dataList.remove(position);
-                        dataAdapter.notifyDataSetChanged();
-                    }
-                });
 
-                return view;
-            }
-        };
-        dataListView.setAdapter(dataAdapter);
+        // Retrieve the user profile data from an API or any other data source
+        String firstName = "John";
+        String lastName = "Doe";
+        String email = "johndoe@example.com";
+        String department = "Engineering";
+        String session = "2021-2022";
+        String mobileNumber = "+1234567890";
 
-        saveButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                String input = inputEditText.getText().toString().trim();
-                if (!input.isEmpty()) {
-                    dataList.add(input);
-                    dataAdapter.notifyDataSetChanged();
-                    inputEditText.getText().clear();
-                }
-            }
-        });
+        // Set the retrieved data to the respective TextViews
+        firstNameTextView.setText("First Name: " + firstName);
+        lastNameTextView.setText("Last Name: " + lastName);
+        emailTextView.setText("Email: " + email);
+        departmentTextView.setText("Department: " + department);
+        sessionTextView.setText("Session: " + session);
+        mobileTextView.setText("Mobile Number: " + mobileNumber);
+
+        profileImageView.setImageResource(R.drawable.profile_photo);
+
     }
+
 }
