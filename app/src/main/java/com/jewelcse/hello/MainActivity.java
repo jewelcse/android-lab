@@ -2,6 +2,7 @@ package com.jewelcse.hello;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.ViewGroup;
 import android.widget.*;
 import com.google.android.material.snackbar.Snackbar;
 import androidx.appcompat.app.AppCompatActivity;
@@ -35,7 +36,23 @@ public class MainActivity extends AppCompatActivity {
         dataListView = findViewById(R.id.dataListView);
 
         dataList = new ArrayList<>();
-        dataAdapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, dataList);
+        dataAdapter = new ArrayAdapter<String>(this, R.layout.list_item_layout, R.id.dataTextView, dataList) {
+            @Override
+            public View getView(final int position, View convertView, ViewGroup parent) {
+                View view = super.getView(position, convertView, parent);
+
+                Button deleteButton = view.findViewById(R.id.deleteButton);
+                deleteButton.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        dataList.remove(position);
+                        dataAdapter.notifyDataSetChanged();
+                    }
+                });
+
+                return view;
+            }
+        };
         dataListView.setAdapter(dataAdapter);
 
         saveButton.setOnClickListener(new View.OnClickListener() {
