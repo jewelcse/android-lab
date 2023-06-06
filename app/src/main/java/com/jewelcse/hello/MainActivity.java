@@ -2,8 +2,7 @@ package com.jewelcse.hello;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.widget.Button;
-import android.widget.TextView;
+import android.widget.*;
 import com.google.android.material.snackbar.Snackbar;
 import androidx.appcompat.app.AppCompatActivity;
 import android.view.View;
@@ -16,23 +15,38 @@ import com.jewelcse.hello.databinding.ActivityMainBinding;
 import android.view.Menu;
 import android.view.MenuItem;
 
-public class MainActivity extends AppCompatActivity {
+import java.util.ArrayList;
+import java.util.List;
 
-    private Button helloButton;
+public class MainActivity extends AppCompatActivity {
+    private EditText inputEditText;
+    private Button saveButton;
+    private ListView dataListView;
+    private List<String> dataList;
+    private ArrayAdapter<String> dataAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        helloButton = findViewById(R.id.helloButton);
+        inputEditText = findViewById(R.id.inputEditText);
+        saveButton = findViewById(R.id.saveButton);
+        dataListView = findViewById(R.id.dataListView);
 
-        helloButton.setOnClickListener(new View.OnClickListener() {
+        dataList = new ArrayList<>();
+        dataAdapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, dataList);
+        dataListView.setAdapter(dataAdapter);
+
+        saveButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this, HelloActivity.class);
-                startActivity(intent);
-                finish();
+                String input = inputEditText.getText().toString().trim();
+                if (!input.isEmpty()) {
+                    dataList.add(input);
+                    dataAdapter.notifyDataSetChanged();
+                    inputEditText.getText().clear();
+                }
             }
         });
     }
