@@ -1,37 +1,28 @@
-<?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                xmlns:tools="http://schemas.android.com/tools"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                tools:context=".MainActivity">
+<!-- activity_main.xml -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:tools="http://schemas.android.com/tools"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:orientation="vertical"
+              android:padding="16dp">
 
     <EditText
-            android:id="@+id/inputEditText"
+            android:id="@+id/itemEditText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Enter text"
-            android:layout_margin="16dp" />
+            android:hint="Enter item name" />
 
     <Button
-            android:id="@+id/saveButton"
+            android:id="@+id/addButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Save"
-            android:layout_below="@id/inputEditText"
-            android:layout_marginTop="8dp"
-            android:layout_alignParentEnd="true"
-            android:layout_marginEnd="16dp" />
+            android:text="Add to Cart" />
 
-    <ListView
-            android:id="@+id/dataListView"
+    <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/cartRecyclerView"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_below="@id/saveButton"
+            android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
-            android:divider="@android:color/darker_gray"
-            android:dividerHeight="1dp"
-            android:drawSelectorOnTop="true" />
+            tools:listitem="@layout/cart_item_layout" />
 
-
-
-</RelativeLayout>
+</LinearLayout>
